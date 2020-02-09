@@ -4,7 +4,7 @@
 
 
 <script type="text/javascript">
-    $.getJSON("core/tr-il.json", function(sonuc){
+    $.getJSON("tr-il.json", function(sonuc){
         $.each(sonuc, function(index, value){
             var row="";
             row +='<option value="'+value.il_id+'">'+value.il_adi+'</option>';
@@ -12,7 +12,7 @@
         })
     });
 
-    $.getJSON("core/tr-ilce.json", function(sonuc){
+    $.getJSON("tr-ilce.json", function(sonuc){
             $.each(sonuc, function(index, value){
                 var row="";
                     row +='<option value="'+value.ilce_id+'">'+value.ilce_adi+'</option>';
@@ -23,7 +23,7 @@
     $("#il").on("change", function(){
         var il=$(this).val();
         $("#ilce").html("");
-        $.getJSON("core/tr-ilce.json", function(sonuc){
+        $.getJSON("tr-ilce.json", function(sonuc){
             $.each(sonuc, function(index, value){
                 var row="";
                 if(value.il_id==il)
