@@ -1,3 +1,42 @@
 <select id="il"></select>
 <br><br>
 <select id="il"></select>
+
+
+<script type="text/javascript">
+    $.getJSON("core/tr-il.json", function(sonuc){
+        $.each(sonuc, function(index, value){
+            var row="";
+            row +='<option value="'+value.il_id+'">'+value.il_adi+'</option>';
+            $("#il").append(row);
+        })
+    });
+
+    $.getJSON("core/tr-ilce.json", function(sonuc){
+            $.each(sonuc, function(index, value){
+                var row="";
+                    row +='<option value="'+value.ilce_id+'">'+value.ilce_adi+'</option>';
+                    $("#ilce").append(row);
+            });
+        });
+
+    $("#il").on("change", function(){
+        var il=$(this).val();
+        $("#ilce").html("");
+        $.getJSON("core/tr-ilce.json", function(sonuc){
+            $.each(sonuc, function(index, value){
+                var row="";
+                if(value.il_id==il)
+                {
+                    row +='<option value="'+value.ilce_id+'">'+value.ilce_adi+'</option>';
+                    $("#ilce").append(row);
+                } 
+            });
+        });
+    });
+</script>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
